@@ -6,15 +6,6 @@ int Check_Armstrong (int Number, int Times);
 int count(int x);
 int reverse(int num);
 
-int isArmstrong(int num)
-{
-    int flag =0;
-    int Times = count(num);
-    int sum = Check_Armstrong(num,Times);
-    if(sum == num)flag =1;
-    else flag = 0;
-    return flag;
-}
 int count(int x){
     int counter =0;
     while(x>0){
@@ -23,18 +14,21 @@ int count(int x){
     }
     return counter;
 }
-int Check_Armstrong (int Number, int Times)
+int isArmstrong(int num)
 {
-  static int Reminder, Sum = 0;
-  if (Number > 0)
-   {
-     Reminder = Number %10;
-     Sum = Sum + pow(Reminder, Times);
-     Check_Armstrong (Number /10, Times);
-     return Sum;
-   }
-   else
-     return 0;
+    int flag =1;
+    int times = count(num);
+    int sum = Check_Armstrong(num,times);
+    if(sum == num)flag =1;
+    else flag = 0;
+    return flag;
+}
+int Check_Armstrong(int num,int times)
+{   
+    int sum =0;
+    if(num>0)
+    sum = (int)((pow(num%10,times)) +Check_Armstrong(num/10, times));
+    return sum;
 }
 int isPalindrome(int num)
 {
@@ -54,4 +48,5 @@ int reverse(int num)
 
     return ((num%10 * pow(10, digit)) + reverse(num/10));
 }
+
 
