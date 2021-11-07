@@ -29,6 +29,5 @@ int main()
       for(int i = first ; i<=last ; i++){
         if(isStrong(i)==1)printf(" %d",i);
     }
-    
    return 0; 
 }
