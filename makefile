@@ -14,17 +14,17 @@ maindloop: $(OBJECTS_MAIN) libclassloops.so
 maindrec: $(OBJECTS_MAIN) libclassrec.so
 	$(CC) $(FLAGS)  -o maindrec $(OBJECTS_MAIN) ./libclassrec.so -lm
 loops: libclassloops.a
-libclassloops.a: $(OBJECTS_loops) 
-	$(AR) -rcs libclassloops.a $(OBJECTS_loops)  
+libclassloops.a: $(OBJECTS_loops) $(OBJECTS_basic)
+	$(AR) -rcs libclassloops.a $(OBJECTS_loops) $(OBJECTS_basic) 
 recursives:	libclassrec.a
 libclassrec.a: $(OBJECTS_rec) $(OBJECTS_basic)
-	$(AR) -rcs libclassrec.a $(OBJECTS_rec)  
+	$(AR) -rcs libclassrec.a $(OBJECTS_rec) $(OBJECTS_basic) 
 recursived: libclassrec.so
-libclassrec.so: $(OBJECTS_rec) 
-	$(CC) -shared -o libclassrec.so $(OBJECTS_rec) 
+libclassrec.so: $(OBJECTS_rec) $(OBJECTS_basic)
+	$(CC) -shared -o libclassrec.so $(OBJECTS_rec) $(OBJECTS_basic) 
 loopd: libclassloops.so
-libclassloops.so: $(OBJECTS_loops) 
-	$(CC) -shared -o libclassloops.so $(OBJECTS_loops) 
+libclassloops.so: $(OBJECTS_loops) $(OBJECTS_basic)
+	$(CC) -shared -o libclassloops.so $(OBJECTS_loops) $(OBJECTS_basic) 
 
 advancedClassificationLoop.o: advancedClassificationLoop.c NumClass.h
 	$(CC) $(FLAGS)  -c advancedClassificationLoop.c -lm
