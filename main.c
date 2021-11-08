@@ -1,9 +1,6 @@
 #include "NumClass.h"
 #include<stdio.h>
 #include<math.h>
-#include "advancedClassificationLoop.c"
-#include "advancedClassificationRecursion.c"
-#include "basicClassification.c"
 
 int main()
 {
